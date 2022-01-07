@@ -1,0 +1,2 @@
+# slider-component
+slider
