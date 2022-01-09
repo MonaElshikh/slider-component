@@ -6,8 +6,8 @@ body {
   padding: 0;
 }
 :root {
-  --nav-bg-color: #c1bdbd;
-  --active-nav-bg-color: rgb(62, 99, 95);
+  --nav-bg-color: #bab6b6;
+  --active-nav-bg-color: rgb(90 156 148);
   --radius: 5px;
 }
 .container {

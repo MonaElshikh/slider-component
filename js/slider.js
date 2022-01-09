@@ -92,21 +92,22 @@ class Slider {
 }
 //*************************************************************************************************************/ 
 let slidesSource = ['images/cat-01.jpg', 'images/cat-02.jpg', 'images/cat-03.jpg', 'images/cat-04.jpg', 'images/cat-05.jpg'];
-let component = ` <div class="container" role="main">
-<div class="slider">
-  <div class="prev">
-    <img src="images/left-arrow.svg" alt="previous" class="prev-img" />
-  </div>
-  <div class="slides-list"></div>
-  <div class="next">
-    <img src="images/right-arrow.svg" alt="next" class="next-img" />
-  </div>
-</div>
-<div class="slides-nav">
-  <ul class="slides-nav-list"></ul>
-</div>
+let component = ` 
+<div class="container" role="main">
+    <div class="slider">
+        <div class="prev">
+            <img src="images/left-arrow.svg" alt="previous" class="prev-img" />
+        </div>
+        <div class="slides-list"></div>
+        <div class="next">
+            <img src="images/right-arrow.svg" alt="next" class="next-img" />
+        </div>
+        </div>
+        <div class="slides-nav">
+        <ul class="slides-nav-list"></ul>
+    </div>
 </div>`;
-let slider = new Slider(component, slidesSource, "slides-list", "slides-nav-list", 1, slidesSource.length, false, true);
+let slider = new Slider(component, slidesSource, "slides-list", "slides-nav-list", 1, slidesSource.length);
 let prevbtn = document.querySelector(".prev img");
 let nextbtn = document.querySelector(".next img");
 slider.create();
