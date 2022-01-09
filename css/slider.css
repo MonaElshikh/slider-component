@@ -39,13 +39,18 @@ body {
   cursor: pointer;
   z-index: 2;
 }
-.slider .prev > img,
-.slider .next > img {
+.prev-img,
+.next-img {
   border-radius: var(--radius);
   width: 50px;
   fill: wheat;
-  background-color: var(--nav-bg-color);
+  background-color: var(--active-nav-bg-color);
   padding: 5px;
+}
+.disable-prev-img,
+.disable-next-img {
+  background-color: var(--nav-bg-color);
+  cursor: no-drop;
 }
 .slides-list {
   display: flex;
@@ -67,6 +72,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 25px;
 }
 .slide-nav {
   background-color: var(--nav-bg-color);
@@ -75,6 +81,18 @@ body {
   border-radius: 50%;
   cursor: pointer;
   margin: 0 2px;
+}
+.slide-nav-nums {
+  background-color: var(--nav-bg-color);
+  width: 25px;
+  height: 25px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin: 0 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 .active-slide-nav {
   background-color: var(--active-nav-bg-color) !important;
@@ -93,8 +111,10 @@ body {
     width: 95%;
     margin: 0 2.5%;
   }
-  .slider .prev > img,
-  .slider .next > img {
+  .prev-img,
+  .next-img,
+  .disable-prev-img,
+  .disable-next-img {
     width: 40px;
   }
   .slider .next {
