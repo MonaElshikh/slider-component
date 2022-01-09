@@ -1,12 +1,14 @@
 
 /* Slider class
     class constructor params
-    - currentIndex> the index that from which slider will start.
-    - slidesCount> total number of slides.
+    - component> the slider desgin
     - slidesSources> slides imges array.
     - slidesContainer> the container class name  that will add the slides to.
     - navContainer> the container class name  that will add nav bullets to.
-    - isBullets> choose nav style to be bullets or numner | Default = true.
+    - currentIndex> the index that from which slider will start.
+    - slidesCount> total number of slides.
+    - isBullets> choose nav style to be bullets or numner | Default = false.
+    - isInfinit> choose  if nav is infint loop | Default = false.
 */
 class Slider {
     constructor(component, slidesSources, slidesContainer, navContainer, currentIndex, slidesCount, isBullets = false, isInfinit = false) {
@@ -19,6 +21,9 @@ class Slider {
         this.isBullets = isBullets;
         this.isInfinit = isInfinit;
     }
+    /*
+    create the imgaes and bullets lists 
+   */
     create() {
         let i = 1;
         this.slidesSources.forEach((src) => {
@@ -34,7 +39,10 @@ class Slider {
             i += 1;
         })
     }
-    getNodeLists() {
+    /*
+     get the imgaes and bullets lists 
+    */
+    get() {
         let sildesList = document.querySelectorAll(`.${this.slidesContainer.className} img`);
         let bulletsList = document.querySelectorAll(`.${this.navContainer.className} li`);
         return {
@@ -42,7 +50,7 @@ class Slider {
         }
     }
     load() {
-        const { sildesList, bulletsList } = this.getNodeLists();
+        const { sildesList, bulletsList } = this.get();
         //clear Style
         sildesList.forEach((slide) => slide.classList.remove("active-slide"));
         bulletsList.forEach((item) => item.classList.remove("active-slide-nav"));
@@ -79,7 +87,7 @@ class Slider {
         this.load();
     }
     navigate() {
-        const { bulletsList } = this.getNodeLists();
+        const { bulletsList } = this.get();
         bulletsList.forEach((bullet) => {
             bullet.onclick = () => {
                 this.currentIndex = parseInt(bullet.dataset.index);
@@ -90,7 +98,7 @@ class Slider {
         })
     }
 }
-//*************************************************************************************************************/ 
+//***************************************************************************************************************************/ 
 let slidesSource = ['images/cat-01.jpg', 'images/cat-02.jpg', 'images/cat-03.jpg', 'images/cat-04.jpg', 'images/cat-05.jpg'];
 let component = ` 
 <div class="container" role="main">
