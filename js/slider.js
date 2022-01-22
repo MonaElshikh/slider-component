@@ -1,27 +1,33 @@
 
 /* Slider class
-    class constructor params
-    - component       >     the slider desgin
+    class constructor params:
+    - component       >     the slider html desgin.
     - slidesSources   >     slides imges array.
-    - slidesContainer >     the container class name  that will add the slides to.
-    - navContainer    >     the container class name  that will add nav bullets to.
+    - slidesContainer >     the container class name that will add slides to it.
+    - navContainer    >     the container class name that will add nav controls to it.
     - currentIndex    >     the index that from which slider will start.
+    class properties :
+    - clearInterval   >     clear interval for slideshow property.
+    - isBullets       >     set if nav style is bullets or numbers default:false.
+    - isInfinit       >     set the slides will infint loop or stop at the last index default:false..
+    - isSlideShow     >     set if slides will slideshow  default:false.
     - slidesCount     >     total number of slides.
 */
 class Slider {
-    constructor(component, slidesSources, slidesContainer, navContainer, currentIndex, slidesCount) {
+    constructor(component, slidesSources, slidesContainer, navContainer, currentIndex) {
         this.component = document.write(component);
         this.slidesSources = slidesSources;
         this.slidesContainer = document.querySelector(`.${slidesContainer}`);
         this.navContainer = document.querySelector(`.${navContainer}`);
         this.currentIndex = currentIndex;
-        this.slidesCount = slidesCount;
     }
+
     /* Properties*/
-    clearInterval;          // prop to clear interval for slideshow property
-    isBullets = false;      // prop to set if nav style is bullets or numbers default:false
-    isInfinit = false;      // prop to set the slides will infint loop or stop at the last index default:false.
-    isSlideShow = false;    // prop to set if slideshow slides default:false;
+    clearInterval;
+    isBullets = false;
+    isInfinit = false;
+    isSlideShow = false;
+    slidesCount = 0;
 
     /*Functions*/
     //create the imgaes and nav lists 
@@ -52,6 +58,7 @@ class Slider {
     }
     load() {
         const { sildesList, bulletsList } = this.get();
+        this.slidesCount = sildesList.length;
         //clear Style & put onlcik to slide to stop slideshow if it is on.
         sildesList.forEach((slide) => { slide.classList.remove("active-slide"); slide.onclick = () => this.stopSlideShow() });
         bulletsList.forEach((item) => item.classList.remove("active-slide-nav"));
@@ -110,27 +117,32 @@ class Slider {
     }
 }
 //***************************************************************************************************************************/ 
+/* 
+ Code Implementation.
+*/
 let slidesSource = ['images/cat-01.jpg', 'images/cat-02.jpg', 'images/cat-03.jpg', 'images/cat-04.jpg', 'images/cat-05.jpg'];
-let component = ` 
-<div class="container" role="main">
-    <div class="slider">
-        <div class="prev">
-            <img src="images/left-arrow.svg" alt="previous" class="prev-img" />
+let component =
+    ` 
+    <div class="container" role="main">
+        <div class="slider">
+            <div class="prev">
+                <img src="images/left-arrow.svg" alt="previous" class="prev-img" />
+            </div>
+            <div class="slides-list"></div>
+            <div class="next">
+                <img src="images/right-arrow.svg" alt="next" class="next-img" />
+            </div>
+            </div>
+            <div class="slides-nav">
+            <ul class="slides-nav-list"></ul>
         </div>
-        <div class="slides-list"></div>
-        <div class="next">
-            <img src="images/right-arrow.svg" alt="next" class="next-img" />
-        </div>
-        </div>
-        <div class="slides-nav">
-        <ul class="slides-nav-list"></ul>
     </div>
-</div>`;
-let slider = new Slider(component, slidesSource, "slides-list", "slides-nav-list", 1, slidesSource.length);
-slider.isSlideShow = true;
-slider.isInfinit = true;
+`;
+let slider = new Slider(component, slidesSource, "slides-list", "slides-nav-list", 1);
 let prevbtn = document.querySelector(".prev img");
 let nextbtn = document.querySelector(".next img");
+slider.isSlideShow = true;
+slider.isInfinit = true;
 slider.create();
 slider.check();
 slider.load();
