@@ -1,0 +1,27 @@
+/* Media Queries */
+@media (max-width: 600px) {
+  .container {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .slider {
+    height: 250px;
+  }
+  .slider,
+  .slide {
+    width: 95%;
+    margin: 0 2.5%;
+  }
+  .prev-img,
+  .next-img,
+  .disable-prev-img,
+  .disable-next-img {
+    width: 40px;
+  }
+  .slider .next {
+    right: 7px !important;
+  }
+  .slider .prev {
+    left: 7px !important;
+  }
+}

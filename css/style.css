@@ -1,0 +1,25 @@
+.slide-nav {
+  background-color: var(--nav-bg-color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 2px;
+}
+.slide-nav-nums {
+  background-color: var(--nav-bg-color);
+  width: 25px;
+  height: 25px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin: 0 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.disable-prev-img,
+.disable-next-img {
+  background-color: var(--nav-bg-color);
+  cursor: no-drop;
+}
